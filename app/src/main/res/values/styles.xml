@@ -70,4 +70,29 @@
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>
     </style>
+    
+    <!-- Styles with "Style" suffix to match layout references -->
+    <style name="CalculatorButtonStyle" parent="CalculatorButton">
+        <!-- Inherits all attributes from CalculatorButton -->
+    </style>
+    
+    <style name="OperatorButtonStyle" parent="OperatorButton">
+        <!-- Inherits all attributes from OperatorButton -->
+    </style>
+    
+    <style name="EqualsButtonStyle" parent="EqualsButton">
+        <!-- Inherits all attributes from EqualsButton -->
+    </style>
+    
+    <style name="ClearButtonStyle" parent="ClearButton">
+        <!-- Inherits all attributes from ClearButton -->
+    </style>
+    
+    <style name="ResultDisplayStyle" parent="ResultDisplay">
+        <!-- Inherits all attributes from ResultDisplay -->
+    </style>
+    
+    <style name="HistoryCardStyle" parent="HistoryCard">
+        <!-- Inherits all attributes from HistoryCard -->
+    </style>
 </resources>

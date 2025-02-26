@@ -17,6 +17,13 @@ public class Calculation {
         timestamp = new Date();
     }
     
+    // Constructeur avec expression et résultat
+    public Calculation(String expression, String result) {
+        this.expression = expression;
+        this.result = result;
+        this.timestamp = new Date();
+    }
+    
     // Getters et Setters
     public String getId() {
         return id;

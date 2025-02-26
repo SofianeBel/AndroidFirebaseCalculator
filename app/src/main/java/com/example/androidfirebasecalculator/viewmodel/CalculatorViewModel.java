@@ -300,4 +300,43 @@ public class CalculatorViewModel extends ViewModel {
     public LiveData<String> getErrorMessage() {
         return errorMessage;
     }
+    
+    /**
+     * Retourne le résultat à afficher
+     * @return LiveData contenant le résultat formaté
+     */
+    public LiveData<String> getDisplayResult() {
+        return result;
+    }
+    
+    /**
+     * Retourne l'opération à afficher
+     * @return LiveData contenant l'opération formatée
+     */
+    public LiveData<String> getDisplayOperation() {
+        MutableLiveData<String> displayOperation = new MutableLiveData<>();
+        
+        if (firstOperand.getValue() != null && currentOperation.getValue() != null && !currentOperation.getValue().isEmpty()) {
+            String formattedOperand = formatResult(firstOperand.getValue());
+            displayOperation.setValue(formattedOperand + " " + currentOperation.getValue());
+        } else {
+            displayOperation.setValue("");
+        }
+        
+        return displayOperation;
+    }
+    
+    /**
+     * Réinitialise la calculatrice (alias pour clear())
+     */
+    public void resetCalculator() {
+        clear();
+    }
+    
+    /**
+     * Supprime le dernier caractère (alias pour delete())
+     */
+    public void deleteLastCharacter() {
+        delete();
+    }
 } 
