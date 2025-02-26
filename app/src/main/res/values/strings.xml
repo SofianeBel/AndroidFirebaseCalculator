@@ -24,4 +24,5 @@
     <string name="save_calculation">Enregistrer le calcul</string>
     <string name="calculation_saved">Calcul enregistré</string>
     <string name="error_saving">Erreur lors de l\'enregistrement</string>
+    <string name="default_web_client_id">797874998067-uu0n5omfe2f5oolobi0692rmaog7f46p.apps.googleusercontent.com</string>
 </resources>

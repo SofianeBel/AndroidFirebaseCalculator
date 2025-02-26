@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connexion"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="48dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/googleSignInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Se connecter avec Google"
+        android:layout_marginTop="32dp"
+        app:icon="@drawable/ic_google"
+        app:iconGravity="start"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/githubSignInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Se connecter avec GitHub"
+        android:layout_marginTop="16dp"
+        app:icon="@drawable/ic_github"
+        app:iconGravity="start"
+        app:layout_constraintTop_toBottomOf="@id/googleSignInButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/microsoftSignInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Se connecter avec Microsoft"
+        android:layout_marginTop="16dp"
+        app:icon="@drawable/ic_microsoft"
+        app:iconGravity="start"
+        app:layout_constraintTop_toBottomOf="@id/githubSignInButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/phoneSignInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Se connecter avec un numéro de téléphone"
+        android:layout_marginTop="16dp"
+        app:icon="@drawable/ic_phone"
+        app:iconGravity="start"
+        app:layout_constraintTop_toBottomOf="@id/microsoftSignInButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout> 
