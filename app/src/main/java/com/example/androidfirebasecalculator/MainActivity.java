@@ -2,6 +2,7 @@ package com.example.androidfirebasecalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidfirebasecalculator.model.Calculation;
+import com.example.androidfirebasecalculator.model.FirebaseHelper;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     private Button btnAdd, btnSubtract, btnMultiply, btnDivide;
     private Button btnEquals, btnClear, btnDelete, btnDecimal;
-    private Button btnHistory, btnSave;
+    private Button btnHistory, btnSave, btnLogout;
 
     private String currentNumber = "";
     private String currentOperation = "";
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private DatabaseReference calculationsRef;
     private DecimalFormat decimalFormat = new DecimalFormat("#.##########");
+    private FirebaseHelper firebaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Initialiser Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         calculationsRef = database.getReference("calculations");
+        firebaseHelper = new FirebaseHelper();
 
         // Initialiser les vues
         initViews();
@@ -83,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnHistory = findViewById(R.id.btnHistory);
         btnSave = findViewById(R.id.btnSave);
+        btnLogout = findViewById(R.id.btnLogout);
     }
 
     private void setClickListeners() {
@@ -113,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Boutons spéciaux
         btnHistory.setOnClickListener(this);
         btnSave.setOnClickListener(this);
+        btnLogout.setOnClickListener(this);
     }
 
     @Override
@@ -152,6 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (id == R.id.btnDelete) deleteLastCharacter();
         else if (id == R.id.btnHistory) openHistory();
         else if (id == R.id.btnSave) saveCalculation();
+        else if (id == R.id.btnLogout) logout();
     }
 
     private void appendNumber(String number) {
@@ -286,19 +294,69 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String expression = tvOperation.getText().toString();
             String result = tvResult.getText().toString();
             
-            Calculation calculation = new Calculation(expression, result);
-            String key = calculationsRef.push().getKey();
-            if (key != null) {
-                calculation.setId(key);
-                calculationsRef.child(key).setValue(calculation)
-                        .addOnSuccessListener(aVoid -> Toast.makeText(MainActivity.this, R.string.calculation_saved, Toast.LENGTH_SHORT).show())
-                        .addOnFailureListener(e -> Toast.makeText(MainActivity.this, R.string.error_saving, Toast.LENGTH_SHORT).show());
+            // Ajouter des logs pour déboguer
+            Log.d("MainActivity", "Tentative d'enregistrement du calcul : " + expression + " = " + result);
+            
+            // Vérifier si l'utilisateur est connecté
+            if (!firebaseHelper.isUserLoggedIn()) {
+                Toast.makeText(MainActivity.this, "Vous devez être connecté pour enregistrer des calculs", Toast.LENGTH_SHORT).show();
+                Log.e("MainActivity", "Erreur : Utilisateur non connecté");
+                return;
             }
+            
+            try {
+                // Créer un objet Calculation
+                Calculation calculation = new Calculation(expression, result);
+                
+                // Enregistrer le calcul avec FirebaseHelper
+                boolean saveInitiated = firebaseHelper.saveCalculation(
+                    calculation,
+                    aVoid -> {
+                        Toast.makeText(MainActivity.this, R.string.calculation_saved, Toast.LENGTH_SHORT).show();
+                        Log.d("MainActivity", "Calcul enregistré avec succès");
+                    },
+                    e -> {
+                        Toast.makeText(MainActivity.this, "Erreur: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.e("MainActivity", "Erreur lors de l'enregistrement du calcul : " + e.getMessage(), e);
+                    }
+                );
+                
+                if (!saveInitiated) {
+                    Toast.makeText(MainActivity.this, "Impossible d'initier l'enregistrement", Toast.LENGTH_SHORT).show();
+                    Log.e("MainActivity", "Impossible d'initier l'enregistrement");
+                }
+            } catch (Exception e) {
+                Log.e("MainActivity", "Exception lors de l'enregistrement : " + e.getMessage(), e);
+                Toast.makeText(MainActivity.this, "Erreur: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(MainActivity.this, "Effectuez un calcul complet avant de l'enregistrer", Toast.LENGTH_SHORT).show();
+            Log.d("MainActivity", "Erreur : Aucun calcul complet à enregistrer");
         }
     }
 
     private void openHistory() {
         Intent intent = new Intent(this, HistoryActivity.class);
         startActivity(intent);
+    }
+    
+    private void logout() {
+        try {
+            // Déconnecter l'utilisateur
+            firebaseHelper.logout();
+            
+            // Afficher un message de confirmation
+            Toast.makeText(this, "Vous avez été déconnecté", Toast.LENGTH_SHORT).show();
+            Log.d("MainActivity", "Utilisateur déconnecté avec succès");
+            
+            // Rediriger vers l'écran de connexion
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        } catch (Exception e) {
+            Log.e("MainActivity", "Erreur lors de la déconnexion : " + e.getMessage(), e);
+            Toast.makeText(this, "Erreur lors de la déconnexion : " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 }

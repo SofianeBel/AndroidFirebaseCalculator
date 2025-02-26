@@ -4,59 +4,137 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".LoginActivity">
+    android:background="@color/background"
+    tools:context=".view.LoginActivity">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/app_logo"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Connexion"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_name"
+        android:textColor="@color/primary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="48dp" />
+        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/login_subtitle"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/googleSignInButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Se connecter avec Google"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@android:color/white"
+        android:padding="12dp"
+        android:text="@string/sign_in_with_google"
+        android:textColor="@color/text_primary"
+        app:cornerRadius="8dp"
         app:icon="@drawable/ic_google"
         app:iconGravity="start"
-        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+        app:iconTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:strokeColor="@color/divider"
+        app:strokeWidth="1dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/githubSignInButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Se connecter avec GitHub"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@android:color/black"
+        android:padding="12dp"
+        android:text="@string/sign_in_with_github"
+        android:textColor="@android:color/white"
+        app:cornerRadius="8dp"
         app:icon="@drawable/ic_github"
         app:iconGravity="start"
+        app:iconTint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/googleSignInButton" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/microsoftSignInButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Se connecter avec Microsoft"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#2F7BD9"
+        android:padding="12dp"
+        android:text="@string/sign_in_with_microsoft"
+        android:textColor="@android:color/white"
+        app:cornerRadius="8dp"
         app:icon="@drawable/ic_microsoft"
         app:iconGravity="start"
+        app:iconTint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/githubSignInButton" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/phoneSignInButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Se connecter avec un numéro de téléphone"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/primary"
+        android:padding="12dp"
+        android:text="@string/sign_in_with_phone"
+        android:textColor="@android:color/white"
+        app:cornerRadius="8dp"
         app:icon="@drawable/ic_phone"
         app:iconGravity="start"
+        app:iconTint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/microsoftSignInButton" />
+
+    <TextView
+        android:id="@+id/tvPrivacyPolicy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/privacy_policy_text"
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout> 

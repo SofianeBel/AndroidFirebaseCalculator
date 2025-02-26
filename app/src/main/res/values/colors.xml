@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#2196F3</color>
-    <color name="primary_dark">#1976D2</color>
-    <color name="primary_light">#BBDEFB</color>
-    <color name="accent">#FF4081</color>
+    <!-- Primary colors -->
+    <color name="primary">#FF6200EE</color>
+    <color name="primary_dark">#3700B3</color>
+    <color name="primary_light">#BB86FC</color>
+    <color name="accent">#03DAC5</color>
+    
+    <!-- Text colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_white">#FFFFFF</color>
     <color name="primary_text">#212121</color>
-    <color name="secondary_text">#757575</color>
-    <color name="icons">#FFFFFF</color>
-    <color name="divider">#BDBDBD</color>
+    
+    <!-- Background colors -->
+    <color name="background">#F5F5F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="divider">#DDDDDD</color>
+    
+    <!-- Button colors -->
+    <color name="button_background">#333333</color>
+    <color name="button_text">#FFFFFF</color>
+    <color name="operator_background">#FF9E40</color>
+    <color name="equals_background">#00C853</color>
+    <color name="clear_background">#F44336</color>
+    
+    <!-- Ripple colors -->
+    <color name="ripple_light">#33FFFFFF</color>
+    <color name="ripple_dark">#33000000</color>
+    <color name="ripple_color">#33000000</color>
+    
+    <!-- Standard colors -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    
+    <!-- Texte et éléments d'interface -->
+    <color name="icons">#FFFFFF</color>
     <color name="gray_light">#F5F5F5</color>
     <color name="gray">#E0E0E0</color>
-    <color name="operator_background">#FFA726</color>
-    <color name="equals_background">#66BB6A</color>
-    <color name="clear_background">#EF5350</color>
+    
+    <!-- Couleurs pour les effets visuels -->
+    <color name="glow_color">#80BB86FC</color>
+    <color name="shadow_color">#40000000</color>
+    
+    <!-- Couleurs pour les animations -->
+    <color name="animation_start">#6200EA</color>
+    <color name="animation_end">#03DAC6</color>
+    
+    <!-- Couleurs du système -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="ic_launcher_background">#3DDC84</color>
+    
+    <!-- Couleurs pour le thème sombre -->
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+    <color name="dark_error">#CF6679</color>
 </resources>

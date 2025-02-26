@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Calculatrice Firebase</string>
+    <string name="app_name">Firebase Calculator</string>
+    
+    <!-- Main Activity -->
     <string name="history">Historique</string>
     <string name="clear">C</string>
-    <string name="delete">DEL</string>
-    <string name="divide">÷</string>
-    <string name="multiply">×</string>
-    <string name="subtract">-</string>
-    <string name="add">+</string>
-    <string name="equals">=</string>
-    <string name="decimal">.</string>
+    <string name="delete">⌫</string>
     <string name="zero">0</string>
     <string name="one">1</string>
     <string name="two">2</string>
@@ -20,9 +16,39 @@
     <string name="seven">7</string>
     <string name="eight">8</string>
     <string name="nine">9</string>
-    <string name="no_history">Aucun historique disponible</string>
-    <string name="save_calculation">Enregistrer le calcul</string>
-    <string name="calculation_saved">Calcul enregistré</string>
-    <string name="error_saving">Erreur lors de l\'enregistrement</string>
-    <string name="default_web_client_id">797874998067-uu0n5omfe2f5oolobi0692rmaog7f46p.apps.googleusercontent.com</string>
+    <string name="decimal">.</string>
+    <string name="add">+</string>
+    <string name="subtract">-</string>
+    <string name="multiply">*</string>
+    <string name="divide">/</string>
+    <string name="equals">=</string>
+    <string name="save_calculation">Enregistrer</string>
+    <string name="logout">Déconnexion</string>
+    <string name="calculation_saved">Calcul enregistré avec succès</string>
+    <string name="error_saving_calculation">Erreur lors de l\'enregistrement du calcul</string>
+    
+    <!-- History Activity -->
+    <string name="history_title">Historique des calculs</string>
+    <string name="no_history">Aucun calcul dans l\'historique</string>
+    <string name="clear_history">Effacer l\'historique</string>
+    <string name="confirm_clear_history">Êtes-vous sûr de vouloir effacer tout l\'historique ?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="history_cleared">Historique effacé</string>
+    <string name="error_clearing_history">Erreur lors de l\'effacement de l\'historique</string>
+    
+    <!-- Login Activity -->
+    <string name="login_title">Connexion</string>
+    <string name="login_subtitle">Connectez-vous pour enregistrer vos calculs</string>
+    <string name="sign_in_with_google">Se connecter avec Google</string>
+    <string name="sign_in_with_github">Se connecter avec GitHub</string>
+    <string name="sign_in_with_microsoft">Se connecter avec Microsoft</string>
+    <string name="sign_in_with_phone">Se connecter avec un téléphone</string>
+    <string name="app_logo">Logo de l\'application</string>
+    <string name="privacy_policy_text">En vous connectant, vous acceptez nos conditions d\'utilisation et notre politique de confidentialité.</string>
+    
+    <!-- Menu -->
+    <string name="action_logout">Déconnexion</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="action_about">À propos</string>
 </resources>

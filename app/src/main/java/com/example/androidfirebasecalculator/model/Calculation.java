@@ -1,72 +1,79 @@
 package com.example.androidfirebasecalculator.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
- * Modèle de données pour représenter un calcul
+ * Classe modèle représentant un calcul
  */
 public class Calculation {
+    private String id;
+    private String userId;
     private String expression;
     private String result;
-    private long timestamp;
-    private String id;
-
-    // Constructeur vide requis pour Firebase
+    private Date timestamp;
+    
+    // Constructeur vide requis pour Firestore
     public Calculation() {
+        timestamp = new Date();
     }
-
-    public Calculation(String expression, String result) {
-        this.expression = expression;
-        this.result = result;
-        this.timestamp = System.currentTimeMillis();
-    }
-
-    public String getExpression() {
-        return expression;
-    }
-
-    public void setExpression(String expression) {
-        this.expression = expression;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
+    
+    // Getters et Setters
     public String getId() {
         return id;
     }
-
+    
     public void setId(String id) {
         this.id = id;
     }
-
+    
+    public String getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    
+    public String getExpression() {
+        return expression;
+    }
+    
+    public void setExpression(String expression) {
+        this.expression = expression;
+    }
+    
+    public String getResult() {
+        return result;
+    }
+    
+    public void setResult(String result) {
+        this.result = result;
+    }
+    
+    public Date getTimestamp() {
+        return timestamp;
+    }
+    
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+    
     /**
-     * Retourne la représentation complète du calcul (expression = résultat)
+     * Retourne une représentation complète du calcul (expression = résultat)
+     * @return la chaîne formatée du calcul
      */
     public String getFullCalculation() {
         return expression + " = " + result;
     }
-
-    /**
-     * Retourne la date formatée
-     */
-    public String getFormattedDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-        return sdf.format(new Date(timestamp));
+    
+    @Override
+    public String toString() {
+        return "Calculation{" +
+                "id='" + id + '\'' +
+                ", userId='" + userId + '\'' +
+                ", expression='" + expression + '\'' +
+                ", result='" + result + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
     }
 }
